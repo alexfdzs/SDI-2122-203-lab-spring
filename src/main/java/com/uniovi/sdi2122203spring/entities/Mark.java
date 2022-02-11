@@ -1,31 +1,49 @@
 package com.uniovi.sdi2122203spring.entities;
 
 public class Mark {
-    private String id;
-    private String email;
-    private String score;
+    private Long id;
+    private String description;
+    private Double score;
 
-    public String getId() {
+    public Mark(Long id, String description, Double score) {
+        this.id = id;
+        this.description = description;
+        this.score = score;
+    }
+
+    public Mark() {
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getDescription() {
+        return description;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Double score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Mark{" +
+                "id='" + id + '\'' +
+                ", email='" + description + '\'' +
+                ", score='" + score + '\'' +
+                '}';
     }
 }
