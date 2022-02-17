@@ -1,8 +1,10 @@
 package com.uniovi.sdi2122203spring.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Profesor {
 
     @Id
@@ -19,6 +21,10 @@ public class Profesor {
         this.nombre = nombre;
         this.apellido = apellido;
         this.categoria = categoria;
+    }
+
+    public Profesor(){
+
     }
 
     public String getDni() {
