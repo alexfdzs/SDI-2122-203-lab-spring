@@ -26,7 +26,7 @@ public class MarksController {
         return "redirect:/mark/list";
     }
 
-    @RequestMapping("/mark/details/{id}")
+    @RequestMapping("/m ark/details/{id}")
     public String getDetail(Model model, @PathVariable Long id) {
         model.addAttribute("mark", marksService.getMark(id));
         return "mark/details";
