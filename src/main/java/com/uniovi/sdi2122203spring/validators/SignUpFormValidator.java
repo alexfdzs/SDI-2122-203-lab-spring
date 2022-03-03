@@ -26,7 +26,7 @@ public class SignUpFormValidator implements Validator {
         if (usersService.getUserByDni(user.getDni()) != null) {
             errors.rejectValue("dni", "Error.signup.dni.duplicate");
         }
-        if (user.getUsername().length() < 5 || user.getUsername().length() > 24) {
+        if (user.getName().length() < 5 || user.getName().length() > 24) {
             errors.rejectValue("name", "Error.signup.name.length");
         }
         if (user.getLastName().length() < 5 || user.getLastName().length() > 24) {

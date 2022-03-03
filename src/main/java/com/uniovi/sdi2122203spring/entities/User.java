@@ -13,7 +13,7 @@ public class User {
 
     @Column(unique = true)
     private String dni;
-    private String username;
+    private String name;
     private String lastName;
     private String role;
 
@@ -27,7 +27,7 @@ public class User {
     public User(String dni, String name, String lastName) {
         super();
         this.dni = dni;
-        this.username = name;
+        this.name = name;
         this.lastName = lastName;
     }
 
@@ -50,12 +50,12 @@ public class User {
         this.dni = dni;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String name) {
-        this.username = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
@@ -83,7 +83,7 @@ public class User {
     }
 
     public String getFullName(){
-        return username + " " +lastName;
+        return name + " " +lastName;
     }
 
     public String getPassword() {

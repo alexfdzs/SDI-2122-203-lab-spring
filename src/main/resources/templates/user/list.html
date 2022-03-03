@@ -24,7 +24,7 @@
             <tbody>
             <tr th:each="user : ${usersList}">
                 <td scope="row" th:text="${user.dni}">71888888X</td>
-                <td scope="row" th:text="${user.username}">Nombre del alumno</td>
+                <td scope="row" th:text="${user.name}">Nombre del alumno</td>
                 <td scope="row" th:text="${user.lastName}">Apellidos del alumno</td>
                 <td scope="row"><a th:href="${'/user/details/' + user.id}">detalles</a></td> <td scope="row"><a th:href="${'/user/edit/' + user.id}">modificar</a></td> <td scope="row" ><a th:href="${'/user/delete/' + user.id}">eliminar</a></td>
             </tr>
