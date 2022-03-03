@@ -1,6 +1,7 @@
 package com.uniovi.sdi2122203spring.services;
 
 import com.uniovi.sdi2122203spring.entities.Mark;
+import com.uniovi.sdi2122203spring.entities.User;
 import com.uniovi.sdi2122203spring.repositories.MarksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,11 +29,22 @@ public class MarksService {
         return marks;
     }
 
+    public List<Mark> getMarksForUser(User user) {
+        List<Mark> marks = new ArrayList<Mark>();
+        if (user.getRole().equals("ROLE_STUDENT")) {
+            marks = marksRepository.findAllByUser(user);
+        }
+        if (user.getRole().equals("ROLE_PROFESSOR")) {
+            marks = getMarks();
+        }
+        return marks;
+    }
 
     public Mark getMark(Long id){
         Set<Mark> consultedList = (Set<Mark>) httpSession.getAttribute("consultedList");
         if ( consultedList == null ) {
-            consultedList = new HashSet<Mark>(); }
+            consultedList = new HashSet<Mark>();
+        }
         Mark obtainedMark = marksRepository.findById(id).get(); consultedList.add(obtainedMark);
         httpSession.setAttribute("consultedList", consultedList); return obtainedMark;
     }
@@ -53,5 +65,7 @@ public class MarksService {
             marksRepository.updateResend(revised, id);
         }
     }
+
+
 
 }
