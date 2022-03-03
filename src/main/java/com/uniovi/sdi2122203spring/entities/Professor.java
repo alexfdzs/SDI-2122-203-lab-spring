@@ -11,16 +11,16 @@ public class Professor {
     @GeneratedValue
     private Long id;
     private String dni;
-    private String nombre;
-    private String apellido;
-    private String categoria;
+    private String name;
+    private String surname;
+    private String category;
 
-    public Professor(Long id, String dni, String nombre, String apellido, String categoria) {
+    public Professor(Long id, String dni, String name, String surname, String category) {
         this.id = id;
         this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.categoria = categoria;
+        this.name = name;
+        this.surname = surname;
+        this.category = category;
     }
 
     public Professor(){
@@ -35,28 +35,28 @@ public class Professor {
         this.dni = dni;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String nombre) {
+        this.name = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getCategoria() {
-        return categoria;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public Long getId() {
@@ -72,9 +72,9 @@ public class Professor {
         return "Professor{" +
                 "id=" + id +
                 ", dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", categoria='" + categoria + '\'' +
+                ", nombre='" + name + '\'' +
+                ", apellido='" + surname + '\'' +
+                ", categoria='" + category + '\'' +
                 '}';
     }
 }

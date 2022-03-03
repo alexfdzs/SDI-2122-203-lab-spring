@@ -44,7 +44,7 @@ springsecurity4">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/professor/list">Ver profesores</a>
-                    <a class="dropdown-item" href="/professor/add">Añadir profesor</a>
+                    <a class="dropdown-item" href="/professor/add" sec:authorize="hasRole('ROLE_ADMIN')">Añadir profesor</a>
                 </div>
             </li>
         </ul>
