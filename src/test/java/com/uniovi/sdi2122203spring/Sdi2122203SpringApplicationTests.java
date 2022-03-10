@@ -1,9 +1,6 @@
 package com.uniovi.sdi2122203spring;
 
-import com.uniovi.sdi2122203spring.pageobjects.PO_HomeView;
-import com.uniovi.sdi2122203spring.pageobjects.PO_Properties;
-import com.uniovi.sdi2122203spring.pageobjects.PO_SignUpView;
-import com.uniovi.sdi2122203spring.pageobjects.PO_View;
+import com.uniovi.sdi2122203spring.pageobjects.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -109,7 +106,7 @@ class Sdi2122203SpringApplicationTests {
         Assertions.assertEquals(checkText, result.get(0).getText());
     }
 
-    //PR06A. Prueba del formulario de registro. DNI repetido en la BD // Propiedad: Error.signup.dni.duplicate
+    //PR06A. Prueba del formulario de registro. DNI repetido en la BD
     @Test
     @Order(7)
     public void PR06A() {
@@ -123,9 +120,10 @@ class Sdi2122203SpringApplicationTests {
         Assertions.assertEquals(checkText , result.get(0).getText());
     }
 
-    //PR06B. Prueba del formulario de registro. Nombre corto. // Propiedad: Error.signup.dni.length
+    //PR06B. Prueba del formulario de registro. Nombre corto.
     @Test
-    @Order(8) public void PR06B() {
+    @Order(8)
+    public void PR06B() {
         PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
         PO_SignUpView.fillForm(driver, "99999990B", "Jose", "Perez", "77777", "77777");
         List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.name.length",
@@ -134,5 +132,193 @@ class Sdi2122203SpringApplicationTests {
         String checkText = PO_HomeView.getP().getString("Error.signup.name.length",
                 PO_Properties.getSPANISH());
         Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06C. Prueba del formulario de registro. Nombre largo.
+    @Test
+    @Order(9)
+    public void PR06C() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "99999990B", "JoseManuelAlvarezNombreMuyLargo", "Perez", "77777", "77777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.name.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.name.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06D. Prueba del formulario de registro. Dni corto.
+    @Test
+    @Order(10)
+    public void PR06D() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69B", "Josefo", "Perez", "77777", "77777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.dni.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.dni.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06E. Prueba del formulario de registro. Dni largo.
+    @Test
+    @Order(11)
+    public void PR06E() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "694621862132168413216498651B", "Josefo", "Perez", "77777", "77777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.dni.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.dni.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06F. Prueba del formulario de registro. Apellido corto.
+    @Test
+    @Order(12) public void PR06F() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69999999B", "Josefo", "Salé", "77777", "77777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.lastName.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.lastName.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06G. Prueba del formulario de registro. Apellido largo.
+    @Test
+    @Order(13) public void PR06G() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69999999B", "Josefo", "PerezRamírezApellidoMuyLargo", "77777", "77777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.lastName.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.lastName.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06H. Prueba del formulario de registro. Contraseña corta.
+    @Test
+    @Order(14) public void PR06H() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69999999B", "Josefo", "Pérez", "777", "777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.password.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.password.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06I. Prueba del formulario de registro. Contraseña larga.
+    @Test
+    @Order(15) public void PR06I() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69999999B", "Josefo", "Pérez",
+                "77777777777777777777777777777", "77777777777777777777777777777");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.password.length",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.password.length",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    //PR06J. Prueba del formulario de registro. Segunda contraseña no coincide.
+    @Test
+    @Order(15) public void PR06J() {
+        PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+        PO_SignUpView.fillForm(driver, "69999999B", "Josefo", "Pérez",
+                "77777", "456827");
+        List<WebElement> result =  PO_SignUpView.checkElementByKey(driver, "Error.signup.passwordConfirm.coincidence",
+                PO_Properties.getSPANISH() );
+        //Comprobamos el error de Nombre corto de nombre corto .
+        String checkText = PO_HomeView.getP().getString("Error.signup.passwordConfirm.coincidence",
+                PO_Properties.getSPANISH());
+        Assertions.assertEquals(checkText , result.get(0).getText());
+    }
+
+    @Test
+    @Order(16) public void PR07() {
+        //Vamos al formulario de logueo.
+        PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+        //Rellenamos el formulario
+        PO_LoginView.fillLoginForm(driver, "99999990A", "123456");
+        //Comprobamos que entramos en la pagina privada de Alumno
+        String checkText =  "Notas del usuario";
+        List<WebElement> result = PO_View.checkElementBy(driver, "text", checkText);
+
+        Assertions.assertEquals(checkText, result.get(0).getText());
+    }
+
+    //PR08. Prueba de identificación válida con ROL profesor.
+    @Test
+    @Order(17) public void PR08() {
+        //Vamos al formulario de logueo.
+        PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+        //Rellenamos el formulario
+        PO_LoginView.fillLoginForm(driver, "99999993D", "123456");
+        //Comprobamos que entramos en la pagina privada de profesor.
+        //Para ello comprobamos que hay un botón 'eliminar' (solo disponible para profesores).
+        String checkText =  "eliminar";
+        List<WebElement> result = PO_View.checkElementBy(driver, "text", checkText);
+
+        Assertions.assertEquals(checkText, result.get(0).getText());
+    }
+
+    //PR09. Prueba de identificación válida con ROL administrador.
+    @Test
+    @Order(18) public void PR09() {
+        //Vamos al formulario de logueo.
+        PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+        //Rellenamos el formulario
+        PO_LoginView.fillLoginForm(driver, "99999988F", "123456");
+        //Comprobamos que entramos en la pagina privada de administrador.
+        //Para ello comprobamos que se puede acceder al 'menu usuarios' (solo disponible para admins).
+        String checkText = "Gestión de usuarios";
+        List<WebElement> result = PO_View.checkElementBy(driver, "text", checkText);
+
+        Assertions.assertEquals(checkText, result.get(0).getText());
+    }
+
+    //PR10. Prueba de identificación inválida con ROL alumno.
+    @Test
+    @Order(19) public void PR10() {
+        //Vamos al formulario de logueo.
+        PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+        //Rellenamos el formulario
+        PO_LoginView.fillLoginForm(driver, "99999988F", "654321");
+        //Comprobamos que seguimos de nuevo en el formulario de login.
+        String checkText = "Identifícate";
+        List<WebElement> result = PO_View.checkElementBy(driver, "text", checkText);
+
+        Assertions.assertEquals(checkText, result.get(0).getText());
+    }
+
+    //PR11(): Prueba de indentificación válida y posterior desconexión
+    @Test
+    @Order(20) public void PR11() {
+        //Vamos al formulario de logueo.
+        PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+        //Rellenamos el formulario
+        PO_LoginView.fillLoginForm(driver, "99999990A", "123456");
+        //Comprobamos que entramos en la pagina privada de Alumno
+        String checkText =  "Notas del usuario";
+        List<WebElement> result = PO_View.checkElementBy(driver, "text", checkText);
+        Assertions.assertEquals(checkText, result.get(0).getText());
+
+        //Desconectamos la sesión.
+        PO_HomeView.clickOption(driver, "logout", "class", "btn btn-primary");
+
+        //Comprobamos que estamos en el formulario de login.
+        checkText = "Identifícate";
+        result = PO_View.checkElementBy(driver, "text", checkText);
+
+        Assertions.assertEquals(checkText, result.get(0).getText());
     }
 }
